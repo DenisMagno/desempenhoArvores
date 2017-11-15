@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <locale.h>
 
-int main(){
+int main()
+{
     setlocale(LC_ALL, "portuguese");
 
-    printf("Hello World!");
-
+    printf("Hello world!\n");
     return 0;
 }
