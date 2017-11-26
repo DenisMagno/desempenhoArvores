@@ -114,7 +114,7 @@ void escreveArquivo(FUNC funcionarios[], char url[]){
             fprintf(arq, "%d;", funcionarios[i].idade);
             fprintf(arq, "%s;", funcionarios[i].empresa);
             fprintf(arq, "%s;", funcionarios[i].departamento);
-            fprintf(arq, "%.2f;\n", funcionarios[i].salario);
+            fprintf(arq, "%.2f\n", funcionarios[i].salario);
         }
     }
 

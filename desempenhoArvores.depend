@@ -1,8 +1,12 @@
 # depslib dependency file v1.0
-1510770692 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\main.c
+1511717591 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\main.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	<locale.h>
+	"estrutura.h"
+	"manipulacaoArquivo.h"
+	"algoritomoOrdenacao.h"
 
 1510771966 source:c:\users\gabriel\documents\faculdade\3º semestre\ed2\projetos c (git)\desempenhoarvores\main.c
 	<stdio.h>
@@ -36,4 +40,28 @@
 	"ArvoreRubroNegra.h"
 
 1510773084 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\arvores\arvorerubronegra.h
+
+1511548890 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\estrutura.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"estrutura.h"
+
+1511549629 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\estrutura.h
+
+1511550108 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\algoritomoordenacao.c
+	<stdio.h>
+	<stdlib.h>
+	"algoritomoOrdenacao.h"
+
+1511550231 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\algoritomoordenacao.h
+
+1511549442 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\manipulacaoarquivo.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	"manipulacaoArquivo.h"
+
+1511550248 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\manipulacaoarquivo.h
 
