@@ -58,6 +58,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="manipulacaoArquivo.h" />
+		<Unit filename="tempo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tempo.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
