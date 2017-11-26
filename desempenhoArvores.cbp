@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="algoritomoOrdenacao.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="algoritomoOrdenacao.h" />
 		<Unit filename="arvores/ArvoreRubroNegra.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -46,6 +50,10 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="manipulacaoArquivo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="manipulacaoArquivo.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
