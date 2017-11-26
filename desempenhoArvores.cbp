@@ -39,6 +39,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="arvores/arvoreAVL.h" />
+		<Unit filename="estrutura.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="estrutura.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
