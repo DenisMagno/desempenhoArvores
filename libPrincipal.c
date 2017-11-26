@@ -45,12 +45,20 @@ int solicita_opcao(){
 void redireciona_para_opcao(int opt){
     switch(opt){ //Verifica qual opção foi selecionada e redireciona para módulos responsáveis pela execução.
         case 1:
-            // Chama o método
+            printf("Inserção na Árvore AVL: \n");
+            analisaAVL_Ordenado();
+
+            printf("Inserção na Árvore Rubro-Negra: \n");
+            analisaLLRB_Ordenado();
             aguarda_enter();
         break;
 
         case 2:
-            // Chama o método
+            printf("Inserção na Árvore AVL: \n");
+            analisaAVL_Desordenado();
+
+            printf("Inserção na Árvore Rubro-Negra: \n");
+            analisaLLRB_Desordenado();
             aguarda_enter();
         break;
 
@@ -60,4 +68,108 @@ void redireciona_para_opcao(int opt){
             exit(1);
         break;
     }
+}
+
+void analisaOrdenado(){
+
+}
+
+void analisaAVL_Desordenado(){
+    FUNC *funcionarios = alocaEstrutura(14999);
+    int i;
+
+    leArquivo(funcionarios, "arquivos/massaDadosDesordenados.csv");
+
+    //Insere na arvore AVL
+    arvAVL *raizAVL;
+    raizAVL = cria_arvAVL();
+
+    for(i = 0; i < 14999; i++){
+        insere_arvAVL(raizAVL, funcionarios[i]);
+    }
+
+    liberar_arvAVL(raizAVL);
+
+    liberaEstrutura(funcionarios);
+}
+
+void analisaLLRB_Desordenado(){
+    FUNC *funcionarios = alocaEstrutura(14999);
+    int i;
+
+    leArquivo(funcionarios, "arquivos/massaDadosDesordenados.csv");
+
+    //Insere na arvore Rubro-Negra
+    arvoreLLRB *raizLLRB;
+    raizLLRB = cria_arvoreLLRB();
+
+    for(i = 0; i < 14999; i++){
+        insere_arvoreLLRB(raizLLRB, funcionarios[i]);
+    }
+
+    liberar_arvoreLLRB(raizLLRB);
+
+    liberaEstrutura(funcionarios);
+}
+
+void analisaAVL_Ordenado(){
+    /*Começa módulo de ordenação*/
+   FUNC *funcionariosD = alocaEstrutura(14999);
+
+   leArquivo(funcionariosD, "arquivos/massaDadosDesordenados.csv");
+
+   shellSort(funcionariosD, 14999);
+
+   escreveArquivo(funcionariosD, "arquivos/massaDadosOrdenados.csv");
+
+   liberaEstrutura(funcionariosD);
+
+   /*Começa módulo de leitura*/
+   FUNC *funcionarios = alocaEstrutura(14999);
+
+   leArquivo(funcionarios, "arquivos/massaDadosOrdenados.csv");
+
+   //Insere na arvore AVL
+    arvAVL *raizAVL;
+    raizAVL = cria_arvAVL();
+
+    int i;
+    for(i = 0; i < 14999; i++){
+        insere_arvAVL(raizAVL, funcionarios[i]);
+    }
+
+    liberar_arvAVL(raizAVL);
+
+   liberaEstrutura(funcionarios);
+}
+
+void analisaLLRB_Ordenado(){
+ /*Começa módulo de ordenação*/
+   FUNC *funcionariosD = alocaEstrutura(14999);
+
+   leArquivo(funcionariosD, "arquivos/massaDadosDesordenados.csv");
+
+   shellSort(funcionariosD, 14999);
+
+   escreveArquivo(funcionariosD, "arquivos/massaDadosOrdenados.csv");
+
+   liberaEstrutura(funcionariosD);
+
+   /*Começa módulo de leitura*/
+   FUNC *funcionarios = alocaEstrutura(14999);
+
+   leArquivo(funcionarios, "arquivos/massaDadosOrdenados.csv");
+
+    //Insere na arvore Rubro-Negra
+    arvoreLLRB *raizLLRB;
+    raizLLRB = cria_arvoreLLRB();
+
+    int i;
+    for(i = 0; i < 14999; i++){
+        insere_arvoreLLRB(raizLLRB, funcionarios[i]);
+    }
+
+    liberar_arvoreLLRB(raizLLRB);
+
+    liberaEstrutura(funcionarios);
 }

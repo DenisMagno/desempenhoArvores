@@ -5,10 +5,10 @@
 #define RED 1
 #define BLACK 0
 
-struct NORN{
-    int info;
-    struct NORN *esq;
-    struct NORN *dir;
+struct NO{
+    FUNC funcionario;
+    struct NO *esq;
+    struct NO *dir;
     int cor;
 };
 
@@ -20,7 +20,7 @@ arvoreLLRB *cria_arvoreLLRB(){
     return raiz;
 }
 
-int cor(struct NORN *H){
+int cor(struct NO *H){
     if(H == NULL){
         return BLACK;
     }else{
@@ -28,7 +28,7 @@ int cor(struct NORN *H){
     }
 }
 
-void trocaCor(struct NORN *H){
+void trocaCor(struct NO *H){
     H->cor = !H->cor;
     if(H->esq != NULL){
         H->esq->cor = !H->esq->cor;
@@ -38,8 +38,8 @@ void trocaCor(struct NORN *H){
     }
 }
 
-struct NORN *rotacionaEsquerda(struct NORN *A){
-    struct NORN *B = A->dir;
+struct NO *rotacionaEsquerda(struct NO *A){
+    struct NO *B = A->dir;
     A->dir = B->esq;
     B->esq = A;
     B->cor = A->cor;
@@ -47,8 +47,8 @@ struct NORN *rotacionaEsquerda(struct NORN *A){
     return B;
 }
 
-struct NORN *rotacionaDireita(struct NORN *A){
-    struct NORN *B = A->esq;
+struct NO *rotacionaDireita(struct NO *A){
+    struct NO *B = A->esq;
     A->esq = B->dir;
     B->dir = A;
     B->cor = A->cor;
@@ -56,7 +56,7 @@ struct NORN *rotacionaDireita(struct NORN *A){
     return B;
 }
 
-struct NORN *move2EsqRED(struct NORN *H){
+struct NO *move2EsqRED(struct NO *H){
     trocaCor(H);
     if(cor(H->dir->esq) == RED){
         H->dir = rotacionaDireita(H->dir);
@@ -66,7 +66,7 @@ struct NORN *move2EsqRED(struct NORN *H){
     return H;
 }
 
-struct NORN *move2DirRED(struct NORN *H){
+struct NO *move2DirRED(struct NO *H){
     trocaCor(H);
     if(cor(H->esq->esq) == RED){
         H = rotacionaDireita(H);
@@ -75,7 +75,7 @@ struct NORN *move2DirRED(struct NORN *H){
     return H;
 }
 
-struct NORN *balancear(struct NORN *H){
+struct NO *balancear(struct NO *H){
     if(cor(H->dir) == RED){
         H = rotacionaEsquerda(H);
     }
@@ -88,22 +88,22 @@ struct NORN *balancear(struct NORN *H){
     return H;
 }
 
-void libera_NORN(struct NORN *no){
-    if(no == NULL){
-        return;
-    }
-    libera_NORN(no->esq);
-    libera_NORN(no->dir);
-    free(no);
-    no = NULL;
-}
-
  void liberar_arvoreLLRB(arvoreLLRB *raiz){
         if(raiz == NULL){
             return;
         }
-        libera_NORN(*raiz);
+        libera_NO_LLRB(*raiz);
         free(raiz);
+}
+
+void libera_NO_LLRB(struct NO *no){
+    if(no == NULL){
+        return;
+    }
+    libera_NO_LLRB(no->esq);
+    libera_NO_LLRB(no->dir);
+    free(no);
+    no = NULL;
 }
 
 int vazia_arvoreLLRB(arvoreLLRB *raiz){
@@ -132,15 +132,15 @@ int altura_arvoreLLRB(arvoreLLRB *raiz){
     }
 }
 
-int totalNORN_arvoreLLRB(arvoreLLRB *raiz){
+int totalNO_arvoreLLRB(arvoreLLRB *raiz){
     if(raiz == NULL){
         return 0;
     }
     if(*raiz == NULL){
         return 0;
     }
-    int alt_esq = totalNORN_arvoreLLRB(&((*raiz)->esq));
-    int alt_dir = totalNORN_arvoreLLRB(&((*raiz)->dir));
+    int alt_esq = totalNO_arvoreLLRB(&((*raiz)->esq));
+    int alt_dir = totalNO_arvoreLLRB(&((*raiz)->dir));
     return(alt_esq + alt_dir + 1);
 }
 
@@ -149,7 +149,7 @@ void preOrdem_arvoreLLRB(arvoreLLRB *raiz){
         return;
     }
     if(*raiz != NULL){
-        printf("%d\n", (*raiz)->info);
+        printf("%d\n", (*raiz)->funcionario.codigo);
         preOrdem_arvoreLLRB(&((*raiz)->esq));
         preOrdem_arvoreLLRB(&((*raiz)->dir));
     }
@@ -161,7 +161,7 @@ void emOrdem_arvoreLLRB(arvoreLLRB *raiz){
     }
     if(*raiz != NULL){
         emOrdem_arvoreLLRB(&((*raiz)->esq));
-        printf("%d\n", (*raiz)->info);
+        printf("%d\n", (*raiz)->funcionario.codigo);
         emOrdem_arvoreLLRB(&((*raiz)->dir));
     }
 }
@@ -173,7 +173,7 @@ void posOrdem_arvoreLLRB(arvoreLLRB *raiz){
     if(*raiz != NULL){
         posOrdem_arvoreLLRB(&((*raiz)->esq));
         posOrdem_arvoreLLRB(&((*raiz)->dir));
-        printf("%d\n", (*raiz)->info);
+        printf("%d\n", (*raiz)->funcionario.codigo);
     }
 }
 
@@ -181,12 +181,12 @@ int consulta_arvoreLLRB(arvoreLLRB *raiz, int valor){
     if(raiz == NULL){
         return 0;
     }
-    struct NORN *atual = *raiz;
+    struct NO *atual = *raiz;
     while(atual != NULL){
-        if(valor == atual->info){
+        if(valor == atual->funcionario.codigo){
             return 1;
         }
-        if(valor > atual->info){
+        if(valor > atual->funcionario.codigo){
             atual = atual->dir;
         }else{
             atual = atual->esq;
@@ -195,7 +195,7 @@ int consulta_arvoreLLRB(arvoreLLRB *raiz, int valor){
     return 0;
 }
 
-struct NORN *removeMenor(struct NORN * H){
+struct NO *removeMenor(struct NO * H){
     if(H->esq == NULL){
         free(H);
         return NULL;
@@ -207,9 +207,9 @@ struct NORN *removeMenor(struct NORN * H){
     return balancear(H);
 }
 
-struct NORN *procuraMenor(struct NORN *atual){
-    struct NORN *no1 = atual;
-    struct NORN *no2 = atual->esq;
+struct NO *procuraMenor(struct NO *atual){
+    struct NO *no1 = atual;
+    struct NO *no2 = atual->esq;
     while(no2 != NULL){
         no1 = no2;
         no2 = no2->esq;
@@ -217,38 +217,38 @@ struct NORN *procuraMenor(struct NORN *atual){
     return no1;
 }
 
-struct NORN *removeNORN(struct NORN *H, int valor){
-    if(valor < H->info){
+struct NO *removeNO(struct NO *H, FUNC funcionario){
+    if(funcionario.codigo < H->funcionario.codigo){
         if(cor(H->esq) == BLACK && cor(H->esq->esq) == BLACK){
             H = move2EsqRED(H);
         }
-        H->esq = removeNORN(H->esq, valor);
+        H->esq = removeNO(H->esq, funcionario);
     }else{
         if(cor(H->esq) == RED){
             H = rotacionaDireita(H);
         }
-        if(valor == H->info && (H->dir == NULL)){
+        if(funcionario.codigo == H->funcionario.codigo && (H->dir == NULL)){
             free(H);
             return NULL;
         }
         if(cor(H->dir) == BLACK && cor(H->dir->esq) == BLACK){
             H = move2DirRED(H);
         }
-        if(valor == H->info){
-            struct NORN *x = procuraMenor(H->dir);
-            H->info = x->info;
+        if(funcionario.codigo == H->funcionario.codigo){
+            struct NO *x = procuraMenor(H->dir);
+            H->funcionario = x->funcionario;
             H->dir = removeMenor(H->dir);
         }else{
-            H->dir = removeNORN(H->dir, valor);
+            H->dir = removeNO(H->dir, funcionario);
         }
     }
     return balancear(H);
 }
 
-int remove_arvoreLLRB(arvoreLLRB *raiz, int valor){
-    if(consulta_arvoreLLRB(raiz, valor)){
-        struct NORN *H = *raiz;
-        *raiz = removeNORN(H, valor);
+int remove_arvoreLLRB(arvoreLLRB *raiz, FUNC funcionario){
+    if(consulta_arvoreLLRB(raiz, funcionario.codigo)){
+        struct NO *H = *raiz;
+        *raiz = removeNO(H, funcionario);
         if(*raiz != NULL){
             (*raiz)->cor = BLACK;
         }
@@ -259,28 +259,28 @@ int remove_arvoreLLRB(arvoreLLRB *raiz, int valor){
 }
 
 
-struct NORN *insereNORN(struct NORN *H, int valor, int *resp){
+struct NO *insereNO(struct NO *H, FUNC funcionario, int *resp){
     if(H == NULL){
-        struct NORN *novo;
-        novo = (struct NORN*) malloc(sizeof(struct NORN));
+        struct NO *novo;
+        novo = (struct NO*) malloc(sizeof(struct NO));
         if(novo == NULL){
             *resp = 0;
             return NULL;
         }
-        novo->info = valor;
+        novo->funcionario = funcionario;
         novo->cor = RED;
         novo->dir = NULL;
         novo->esq = NULL;
         *resp = 1;
         return novo;
     }
-    if(valor == H->info){
+    if(funcionario.codigo == H->funcionario.codigo){
         *resp = 0;
     }else{
-        if(valor < H->info){
-            H->esq = insereNORN(H->esq, valor, resp);
+        if(funcionario.codigo < H->funcionario.codigo){
+            H->esq = insereNO(H->esq, funcionario, resp);
         }else{
-            H->dir = insereNORN(H->dir, valor, resp);
+            H->dir = insereNO(H->dir, funcionario, resp);
         }
     }
     if(cor(H->dir) == RED && cor(H->esq) == BLACK){
@@ -295,9 +295,9 @@ struct NORN *insereNORN(struct NORN *H, int valor, int *resp){
     return H;
 }
 
-int insere_arvoreLLRB(arvoreLLRB *raiz, int valor){
+int insere_arvoreLLRB(arvoreLLRB *raiz, FUNC funcionario){
     int resp;
-    *raiz = insereNORN(*raiz, valor, &resp);
+    *raiz = insereNO(*raiz, funcionario, &resp);
     if((*raiz) != NULL){
         (*raiz)->cor = BLACK;
     }

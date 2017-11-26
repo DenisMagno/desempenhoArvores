@@ -1,4 +1,6 @@
-typedef struct NORN *arvoreLLRB;
+#import "../estrutura.h"
+
+typedef struct NO *arvoreLLRB;
 
 arvoreLLRB *cria_arvoreLLRB();
 
@@ -16,8 +18,8 @@ void emOrdem_arvoreLLRB(arvoreLLRB *raiz);
 
 void posOrdem_arvoreLLRB(arvoreLLRB *raiz);
 
-int insere_arvoreLLRB(arvoreLLRB *raiz, int valor);
+int insere_arvoreLLRB(arvoreLLRB *raiz, FUNC funcionario);
 
-int remove_arvoreLLRB(arvoreLLRB *raiz, int valor);
+int remove_arvoreLLRB(arvoreLLRB *raiz, FUNC funcionario);
 
 int consulta_arvoreLLRB(arvoreLLRB *raiz, int valor);

@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include "arvoreAVL.h"
 
-struct NOAVL{
-    int info;
+struct NO{
+    FUNC funcionario;
     int alt; //inclui altura da sub-arvore
-    struct NOAVL *esq;
-    struct NOAVL *dir;
+    struct NO *esq;
+    struct NO *dir;
 };
 
 arvAVL *cria_arvAVL(){
@@ -19,7 +19,7 @@ arvAVL *cria_arvAVL(){
 
 //Funções Axiliares
 
-int alt_no(struct NOAVL *no){
+int alt_no(struct NO *no){
     if(no == NULL){
         return -1;
     }else{
@@ -27,7 +27,7 @@ int alt_no(struct NOAVL *no){
     }
 }
 
-int fatorBalanceamento_NOAVL(struct NOAVL *no){
+int fatorBalanceamento_NO(struct NO *no){
     return labs(alt_no(no->esq) - alt_no(no->dir));
 }
 
@@ -40,7 +40,7 @@ int maior(int x, int y){
 }
 
 void rotacaoLL(arvAVL *raiz){
-    struct NOAVL *no;
+    struct NO *no;
     no = (*raiz)->esq;
     (*raiz)->esq = no->dir;
     no->dir = *raiz;
@@ -50,7 +50,7 @@ void rotacaoLL(arvAVL *raiz){
 }
 
 void rotacaoRR(arvAVL *raiz){
-    struct NOAVL *no;
+    struct NO *no;
     no = (*raiz)->dir;
     (*raiz)->dir = no->esq;
     no->esq = *raiz;
@@ -75,16 +75,16 @@ void rotacaoRL(arvAVL *raiz){
         if(raiz == NULL){
             return;
         }
-        libera_NOAVL(*raiz);
+        libera_NO(*raiz);
         free(raiz);
 }
 
-void libera_NOAVL(struct NOAVL *no){
+void libera_NO(struct NO *no){
     if(no == NULL){
         return;
     }
-    libera_NOAVL(no->esq);
-    libera_NOAVL(no->dir);
+    libera_NO(no->esq);
+    libera_NO(no->dir);
     free(no);
     no = NULL;
 }
@@ -115,15 +115,15 @@ int altura_arvAVL(arvAVL *raiz){
     }
 }
 
-int totalNOAVL_arvAVL(arvAVL *raiz){
+int totalNO_arvAVL(arvAVL *raiz){
     if(raiz == NULL){
         return 0;
     }
     if(*raiz == NULL){
         return 0;
     }
-    int alt_esq = totalNOAVL_arvAVL(&((*raiz)->esq));
-    int alt_dir = totalNOAVL_arvAVL(&((*raiz)->dir));
+    int alt_esq = totalNO_arvAVL(&((*raiz)->esq));
+    int alt_dir = totalNO_arvAVL(&((*raiz)->dir));
     return(alt_esq + alt_dir + 1);
 }
 
@@ -132,7 +132,7 @@ void preOrdem_arvAVL(arvAVL *raiz){
         return;
     }
     if(*raiz != NULL){
-        printf("%d\n", (*raiz)->info);
+        printf("%d\n", (*raiz)->funcionario);
         preOrdem_arvAVL(&((*raiz)->esq));
         preOrdem_arvAVL(&((*raiz)->dir));
     }
@@ -144,7 +144,7 @@ void emOrdem_arvAVL(arvAVL *raiz){
     }
     if(*raiz != NULL){
         emOrdem_arvAVL(&((*raiz)->esq));
-        printf("%d\n", (*raiz)->info);
+        printf("%d\n", (*raiz)->funcionario);
         emOrdem_arvAVL(&((*raiz)->dir));
     }
 }
@@ -156,30 +156,30 @@ void posOrdem_arvAVL(arvAVL *raiz){
     if(*raiz != NULL){
         posOrdem_arvAVL(&((*raiz)->esq));
         posOrdem_arvAVL(&((*raiz)->dir));
-        printf("%d\n", (*raiz)->info);
+        printf("%d\n", (*raiz)->funcionario);
     }
 }
 
-int insere_arvAVL(arvAVL *raiz, int valor){
+int insere_arvAVL(arvAVL *raiz, FUNC funcionario){
     int res; //pega resposta das chamadas da funcao
     if(*raiz == NULL){
-        struct NOAVL *novo;
-        novo = (struct NOAVL*) malloc(sizeof(struct NOAVL));
+        struct NO *novo;
+        novo = (struct NO*) malloc(sizeof(struct NO));
         if(novo == NULL){
             return 0;
         }
-        novo->info = valor;
+        novo->funcionario = funcionario;
         novo->alt = 0;
         novo->esq = NULL;
         novo->dir = NULL;
         *raiz = novo;
         return 1;
     }
-    struct NOAVL *atual = *raiz;
-    if(valor < atual->info){
-        if((res = insere_arvAVL(&(atual->esq), valor)) == 1){
-            if(fatorBalanceamento_NOAVL(atual) >= 2){
-                if(valor < (*raiz)->esq->info){
+    struct NO *atual = *raiz;
+    if(funcionario.codigo < atual->funcionario.codigo){
+        if((res = insere_arvAVL(&(atual->esq), funcionario)) == 1){
+            if(fatorBalanceamento_NO(atual) >= 2){
+                if(funcionario.codigo < (*raiz)->esq->funcionario.codigo){
                     rotacaoLL(raiz);
                 }else{
                     rotacaoLR(raiz);
@@ -187,10 +187,10 @@ int insere_arvAVL(arvAVL *raiz, int valor){
             }
         }
     }else{
-        if(valor > atual->info){
-            if((res = insere_arvAVL(&(atual->dir), valor)) == 1){
-                if(fatorBalanceamento_NOAVL(atual) >= 2){
-                    if((*raiz)->dir->info < valor){
+        if(funcionario.codigo > atual->funcionario.codigo){
+            if((res = insere_arvAVL(&(atual->dir), funcionario)) == 1){
+                if(fatorBalanceamento_NO(atual) >= 2){
+                    if((*raiz)->dir->funcionario.codigo < funcionario.codigo){
                         rotacaoRR(raiz);
                     }else{
                         rotacaoRL(raiz);
@@ -198,7 +198,6 @@ int insere_arvAVL(arvAVL *raiz, int valor){
                 }
             }
         }else{
-            printf("Valor duplicado");
             return 0;
         }
     }
@@ -206,9 +205,9 @@ int insere_arvAVL(arvAVL *raiz, int valor){
     return res;
 }
 
-struct NOAVL *procuramenor(struct NOAVL *atual){
-    struct NOAVL *no1 = atual;
-    struct NOAVL *no2 = atual->esq;
+struct NO *procuramenor(struct NO *atual){
+    struct NO *no1 = atual;
+    struct NO *no2 = atual->esq;
     while(no2 != NULL){
         no1 = no2;
         no2 = no2->esq;
@@ -216,14 +215,14 @@ struct NOAVL *procuramenor(struct NOAVL *atual){
     return no1;
 }
 
-int remove_arvAVL(arvAVL *raiz, int valor){
+int remove_arvAVL(arvAVL *raiz, FUNC funcionario){
     if(*raiz == NULL){
         return 0;
     }
     int res;
-    if(valor < (*raiz)->info){
-        if((res = remove_arvAVL(&(*raiz)->esq, valor)) == 1){
-            if(fatorBalanceamento_NOAVL(*raiz) >= 2){
+    if(funcionario.codigo < (*raiz)->funcionario.codigo){
+        if((res = remove_arvAVL(&(*raiz)->esq, funcionario)) == 1){
+            if(fatorBalanceamento_NO(*raiz) >= 2){
                 if(alt_no((*raiz)->dir->esq <= alt_no((*raiz)->dir->dir))){
                     rotacaoRR(raiz);
                 }else{
@@ -232,9 +231,9 @@ int remove_arvAVL(arvAVL *raiz, int valor){
             }
         }
     }
-    if((*raiz)->info < valor){
-        if((res = remove_arvAVL(&(*raiz)->dir, valor)) == 1){
-            if(fatorBalanceamento_NOAVL(*raiz) >= 2){
+    if((*raiz)->funcionario.codigo < funcionario.codigo){
+        if((res = remove_arvAVL(&(*raiz)->dir, funcionario)) == 1){
+            if(fatorBalanceamento_NO(*raiz) >= 2){
                 if(alt_no((*raiz)->esq->dir) <= alt_no((*raiz)->esq->esq)){
                     rotacaoLL(raiz);
                 }else{
@@ -243,9 +242,9 @@ int remove_arvAVL(arvAVL *raiz, int valor){
             }
         }
     }
-    if((*raiz)->info == valor){
+    if((*raiz)->funcionario.codigo == funcionario.codigo){
         if(((*raiz)->esq == NULL) || (*raiz)->dir == NULL){
-            struct NOAVL *no_velho = (*raiz);
+            struct NO *no_velho = (*raiz);
             if((*raiz)->esq != NULL){
                 *raiz = (*raiz)->esq;
             }else{
@@ -253,10 +252,10 @@ int remove_arvAVL(arvAVL *raiz, int valor){
             }
             free(no_velho);
         }else{
-            struct NOAVL *temp = procuramenor((*raiz)->dir);
-            (*raiz)->info = temp->info;
-            remove_arvAVL( (*raiz)->dir,(*raiz)->info);
-            if(fatorBalanceamento_NOAVL(*raiz) >= 2){
+            struct NO *temp = procuramenor((*raiz)->dir);
+            (*raiz)->funcionario.codigo = temp->funcionario.codigo;
+            remove_arvAVL( (*raiz)->dir,(*raiz)->funcionario);
+            if(fatorBalanceamento_NO(*raiz) >= 2){
                 if(alt_no((*raiz)->esq->dir) <= alt_no((*raiz)->esq->esq)){
                     rotacaoLL(raiz);
                 }else{
@@ -279,13 +278,12 @@ int consulta_arvAVL(arvAVL *raiz, int valor){
     if(raiz == NULL){
         return 0;
     }
-    struct NOAVL
-    *atual = *raiz;
+    struct NO *atual = *raiz;
     while(atual != NULL){
-        if(valor == atual->info){
+        if(valor == atual->funcionario.codigo){
             return 1;
         }
-        if(valor > atual->info){
+        if(valor > atual->funcionario.codigo){
             atual = atual->dir;
         }else{
             atual = atual->esq;

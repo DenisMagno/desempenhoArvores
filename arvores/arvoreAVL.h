@@ -1,4 +1,6 @@
-typedef struct NOAVL *arvAVL;
+#import "../estrutura.h"
+
+typedef struct NO *arvAVL;
 
 arvAVL *cria_arvAVL();
 
@@ -16,8 +18,8 @@ void emOrdem_arvAVL(arvAVL *raiz);
 
 void posOrdem_arvAVL(arvAVL *raiz);
 
-int insere_arvAVL(arvAVL *raiz, int valor);
+int insere_arvAVL(arvAVL *raiz, FUNC funcionario);
 
-int remove_arvAVL(arvAVL *raiz, int valor);
+int remove_arvAVL(arvAVL *raiz, FUNC funcionario);
 
 int consulta_arvAVL(arvAVL *raiz, int valor);

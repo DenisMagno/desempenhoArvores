@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
-#include "estrutura.h"
-#include "manipulacaoArquivo.h"
-#include "algoritomoOrdenacao.h"
 #include "libPrincipal.h"
 
 int main(){

@@ -47,6 +47,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="estrutura.h" />
+		<Unit filename="libPrincipal.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="libPrincipal.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

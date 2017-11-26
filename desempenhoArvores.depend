@@ -1,12 +1,9 @@
 # depslib dependency file v1.0
-1511719866 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\main.c
+1511722283 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<locale.h>
-	"estrutura.h"
-	"manipulacaoArquivo.h"
-	"algoritomoOrdenacao.h"
 	"libPrincipal.h"
 
 1510771966 source:c:\users\gabriel\documents\faculdade\3º semestre\ed2\projetos c (git)\desempenhoarvores\main.c
@@ -28,19 +25,19 @@
 
 1510772376 c:\users\gabriel\documents\faculdade\3º semestre\ed2\projetos c (git)\desempenhoarvores\arvores\arvorerubronegra.h
 
-1510773084 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\arvores\arvoreavl.c
+1511724937 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\arvores\arvoreavl.c
 	<stdio.h>
 	<stdlib.h>
 	"arvoreAVL.h"
 
-1510773084 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\arvores\arvoreavl.h
+1511724049 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\arvores\arvoreavl.h
 
-1510773084 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\arvores\arvorerubronegra.c
+1511723965 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\arvores\arvorerubronegra.c
 	<stdio.h>
 	<stdlib.h>
 	"ArvoreRubroNegra.h"
 
-1510773084 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\arvores\arvorerubronegra.h
+1511724053 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\arvores\arvorerubronegra.h
 
 1511548890 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\estrutura.c
 	<stdio.h>
@@ -66,11 +63,23 @@
 
 1511550248 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\manipulacaoarquivo.h
 
-1511719763 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\libprincipal.c
+1511724871 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\libprincipal.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"libPrincipal.h"
 
-1511718116 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\libprincipal.h
+1511724139 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\libprincipal.h
+	"estrutura.h"
+	"manipulacaoArquivo.h"
+	"algoritomoOrdenacao.h"
+	"arvores/arvoreAVL.h"
+	"arvores/ArvoreRubroNegra.h"
+
+1511720193 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\arvoreavl.c
+	<stdio.h>
+	<stdlib.h>
+	"arvoreAVL.h"
+
+1511723924 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\arvoreavl.h
 
