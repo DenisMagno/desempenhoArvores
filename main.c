@@ -10,32 +10,13 @@
 int main(){
     setlocale(LC_ALL, "portuguese");
 
+     /* Sistema ininterrupto */
     int opt;
+    do{
+        imprime_menu();
 
-    imprime_menu();
+        opt = solicita_opcao();
 
-    opt = solicita_opcao();
-
-    redireciona_para_opcao(opt);
-
-    FUNC *funcionarios = alocaEstrutura(14999);
-
-    leArquivo(funcionarios, "arquivos/massaDadosDesordenados.csv");
-
-    shellSort(funcionarios, 14999);
-
-    escreveArquivo(funcionarios, "arquivos/massaDadosOrdenados.csv");
-
-    /*int i;
-    for(i = 0; i < 14999; i++){
-        printf("%d ", i);
-        printf("%d ", funcionarios[i].codigo);
-        printf("%s ", funcionarios[i].nome);
-        printf("%d ", funcionarios[i].idade);
-        printf("%s ", funcionarios[i].empresa);
-        printf("%s ", funcionarios[i].departamento);
-        printf("%.2f\n", funcionarios[i].salario);
-    }*/
-
-    liberaEstrutura(funcionarios);
+        redireciona_para_opcao(opt);
+    }while(opt);
 }
