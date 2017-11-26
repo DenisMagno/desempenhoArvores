@@ -43,22 +43,21 @@ int solicita_opcao(){
 }
 
 void redireciona_para_opcao(int opt){
+
     switch(opt){ //Verifica qual opção foi selecionada e redireciona para módulos responsáveis pela execução.
         case 1:
-            printf("Inserção na Árvore AVL: \n");
-            analisaAVL_Ordenado();
+            printf("\nMedição do tempo para uma estrutura previamente ordenada:\n");
+            printf("Inserção na Árvore AVL: %lf\n", analisaAVL_Ordenado());
 
-            printf("Inserção na Árvore Rubro-Negra: \n");
-            analisaLLRB_Ordenado();
+            printf("Inserção na Árvore Rubro-Negra: %lf\n", analisaLLRB_Ordenado());
             aguarda_enter();
         break;
 
         case 2:
-            printf("Inserção na Árvore AVL: \n");
-            analisaAVL_Desordenado();
+            printf("\nMedição do tempo para uma estrutura desordenada:\n");
+            printf("Inserção na Árvore AVL: %lf\n", analisaAVL_Desordenado());
 
-            printf("Inserção na Árvore Rubro-Negra: \n");
-            analisaLLRB_Desordenado();
+            printf("Inserção na Árvore Rubro-Negra: %lf\n", analisaLLRB_Desordenado());
             aguarda_enter();
         break;
 
@@ -70,13 +69,13 @@ void redireciona_para_opcao(int opt){
     }
 }
 
-void analisaOrdenado(){
-
-}
-
-void analisaAVL_Desordenado(){
+double analisaAVL_Desordenado(){
     FUNC *funcionarios = alocaEstrutura(14999);
     int i;
+
+    clock_t tInicio, tFim;
+
+    tInicio = retornaTempoAtual();
 
     leArquivo(funcionarios, "arquivos/massaDadosDesordenados.csv");
 
@@ -88,14 +87,22 @@ void analisaAVL_Desordenado(){
         insere_arvAVL(raizAVL, funcionarios[i]);
     }
 
+    tFim = retornaTempoAtual();
+
     liberar_arvAVL(raizAVL);
 
     liberaEstrutura(funcionarios);
+
+    return retornaTempoCalculado(tInicio, tFim);
 }
 
-void analisaLLRB_Desordenado(){
+double analisaLLRB_Desordenado(){
     FUNC *funcionarios = alocaEstrutura(14999);
     int i;
+
+    clock_t tInicio, tFim;
+
+    tInicio = retornaTempoAtual();
 
     leArquivo(funcionarios, "arquivos/massaDadosDesordenados.csv");
 
@@ -107,12 +114,16 @@ void analisaLLRB_Desordenado(){
         insere_arvoreLLRB(raizLLRB, funcionarios[i]);
     }
 
+    tFim = retornaTempoAtual();
+
     liberar_arvoreLLRB(raizLLRB);
 
     liberaEstrutura(funcionarios);
+
+    return retornaTempoCalculado(tInicio, tFim);
 }
 
-void analisaAVL_Ordenado(){
+double analisaAVL_Ordenado(){
     /*Começa módulo de ordenação*/
    FUNC *funcionariosD = alocaEstrutura(14999);
 
@@ -127,6 +138,10 @@ void analisaAVL_Ordenado(){
    /*Começa módulo de leitura*/
    FUNC *funcionarios = alocaEstrutura(14999);
 
+   clock_t tInicio, tFim;
+
+    tInicio = retornaTempoAtual();
+
    leArquivo(funcionarios, "arquivos/massaDadosOrdenados.csv");
 
    //Insere na arvore AVL
@@ -138,12 +153,16 @@ void analisaAVL_Ordenado(){
         insere_arvAVL(raizAVL, funcionarios[i]);
     }
 
+    tFim = retornaTempoAtual();
+
     liberar_arvAVL(raizAVL);
 
    liberaEstrutura(funcionarios);
+
+   return retornaTempoCalculado(tInicio, tFim);
 }
 
-void analisaLLRB_Ordenado(){
+double analisaLLRB_Ordenado(){
  /*Começa módulo de ordenação*/
    FUNC *funcionariosD = alocaEstrutura(14999);
 
@@ -158,6 +177,10 @@ void analisaLLRB_Ordenado(){
    /*Começa módulo de leitura*/
    FUNC *funcionarios = alocaEstrutura(14999);
 
+    clock_t tInicio, tFim;
+
+    tInicio = retornaTempoAtual();
+
    leArquivo(funcionarios, "arquivos/massaDadosOrdenados.csv");
 
     //Insere na arvore Rubro-Negra
@@ -169,7 +192,11 @@ void analisaLLRB_Ordenado(){
         insere_arvoreLLRB(raizLLRB, funcionarios[i]);
     }
 
+    tFim = retornaTempoAtual();
+
     liberar_arvoreLLRB(raizLLRB);
 
     liberaEstrutura(funcionarios);
+
+    return retornaTempoCalculado(tInicio, tFim);
 }

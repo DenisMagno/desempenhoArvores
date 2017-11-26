@@ -63,18 +63,19 @@
 
 1511550248 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\manipulacaoarquivo.h
 
-1511724871 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\libprincipal.c
+1511730082 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\libprincipal.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"libPrincipal.h"
 
-1511724139 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\libprincipal.h
+1511729808 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\libprincipal.h
 	"estrutura.h"
 	"manipulacaoArquivo.h"
 	"algoritomoOrdenacao.h"
 	"arvores/arvoreAVL.h"
 	"arvores/ArvoreRubroNegra.h"
+	"tempo.h"
 
 1511720193 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\arvoreavl.c
 	<stdio.h>
@@ -82,4 +83,12 @@
 	"arvoreAVL.h"
 
 1511723924 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\arvoreavl.h
+
+1511728871 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\tempo.h
+	<time.h>
+
+1511728962 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\tempo.c
+	<stdio.h>
+	<stdlib.h>
+	"tempo.h"
 
