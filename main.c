@@ -5,8 +5,19 @@
 #include "estrutura.h"
 #include "manipulacaoArquivo.h"
 #include "algoritomoOrdenacao.h"
+#include "libPrincipal.h"
 
 int main(){
+    setlocale(LC_ALL, "portuguese");
+
+    int opt;
+
+    imprime_menu();
+
+    opt = solicita_opcao();
+
+    redireciona_para_opcao(opt);
+
     FUNC *funcionarios = alocaEstrutura(14999);
 
     leArquivo(funcionarios, "arquivos/massaDadosDesordenados.csv");

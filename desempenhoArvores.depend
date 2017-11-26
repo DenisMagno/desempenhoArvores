@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1511717591 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\main.c
+1511719866 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -7,6 +7,7 @@
 	"estrutura.h"
 	"manipulacaoArquivo.h"
 	"algoritomoOrdenacao.h"
+	"libPrincipal.h"
 
 1510771966 source:c:\users\gabriel\documents\faculdade\3º semestre\ed2\projetos c (git)\desempenhoarvores\main.c
 	<stdio.h>
@@ -56,7 +57,7 @@
 
 1511550231 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\algoritomoordenacao.h
 
-1511549442 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\manipulacaoarquivo.c
+1511717675 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\manipulacaoarquivo.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -64,4 +65,12 @@
 	"manipulacaoArquivo.h"
 
 1511550248 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\manipulacaoarquivo.h
+
+1511719763 source:e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\libprincipal.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"libPrincipal.h"
+
+1511718116 e:\documents\ifsp\ads\modulo iii\ed2 - estrutura de dados ii\projeto final\desempenhoarvores\libprincipal.h
 
